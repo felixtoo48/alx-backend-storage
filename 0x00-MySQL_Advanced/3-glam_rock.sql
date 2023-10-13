@@ -2,8 +2,8 @@
 -- as their main style, ranked by their longevity
 
 SELECT band_name,
-       TIMESTAMPDIFF(YEAR, formed, IFNULL(split, '2022-01-01')) AS lifespan
+	COALESCE(split, 2020) - formed AS lifespan
 FROM metal_bands
-WHERE style = 'Glam rock'
+WHERE style LIKE '%Glam rock%'
 ORDER BY lifespan DESC;
 
