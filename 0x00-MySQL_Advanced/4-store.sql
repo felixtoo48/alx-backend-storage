@@ -1,5 +1,5 @@
 --  creating a trigge that decreases an item quantity
--- after an order of the item is made
+-- after an order of the item is made ...
 
 CREATE TRIGGER decrease_item 
 AFTER INSERT ON orders FOR EACH ROW
