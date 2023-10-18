@@ -23,8 +23,9 @@ class Cache():
         # Return the random key as a string
         return random_key
 
-    def get(self, key: str, fn: Callable = None) -> Union[str, bytes, int, float, None]:
-        """ method that takes key argument and an optinal callable argument fn 
+    def get(self, key: str, fn: Callable = None) ->\
+            Union[str, bytes, int, float, None]:
+        """ method that takes key argument and an optinal callable argument fn
         and return converted data back to desired format"""
         # Get the value from Redis
         value = self._redis.get(key)
@@ -38,7 +39,7 @@ class Cache():
             return value
 
         return None
-    
+
     def get_str(self, key: str) -> Union[str, bytes, None]:
         return self.get(key, fn=lambda x: x.decode("utf-8"))
 
