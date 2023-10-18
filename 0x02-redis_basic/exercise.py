@@ -58,6 +58,8 @@ class Cache():
         # clear database
         self._redis.flushdb()
 
+    @call_history
+    @count_calls
     def store(self, data: Union[str, bytes, int, float]) -> str:
         """ method that takes in data argument and returns a string """
         # Generate a random key using uuid
