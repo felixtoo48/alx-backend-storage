@@ -3,7 +3,7 @@
 import redis
 import sys
 import uuid
-from typing import Union, Callable, Optional, List
+from typing import Union, Callable, Optional
 from functools import wraps
 
 
@@ -43,9 +43,9 @@ def replay(method: Callable) -> None:
     print(f"{key} was called {count} times:")
     input_list = server.lrange(inputs, 0, -1)
     output_list = server.lrange(outputs, 0, -1)
-    zipped = List(zip(input_list, output_list))
+    zipped = list(zip(input_list, output_list))
     for k, v in zipped:
-        attr, result = k.decode("utf-8"), k.decode("utf-8")
+        attr, result = k.decode("utf-8"), v.decode("utf-8")
         print(f"{key}(*{attr}) -> {result}")
 
 
